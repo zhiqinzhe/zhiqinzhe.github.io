@@ -17,6 +17,10 @@
     /* IE/Edge */
     user-select: none;
     /* 标准语法 */
+    -o-user-select: none;
+    /* 已经被抛弃或即将被抛弃*/
+    -khtml-user-select: none;
+    /* 已经被抛弃或即将被抛弃*/
 }
 
 body {
