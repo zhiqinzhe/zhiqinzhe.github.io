@@ -12,50 +12,55 @@ closeClick.addEventListener('click', function () {
 
 function debounce(task, delay, fixedFunction) {
     let timer
-    return function (...args) {
-        if (timer) {
-            clearTimeout(timer)
-        }
-        timer = setTimeout(() => {
-            task(fixedFunction)
-        }, delay)
+    if (timer) {
+        clearTimeout(timer)
     }
+    timer = setTimeout(() => {
+        task(fixedFunction)
+    }, delay)
 }
 
 function VisualAreaHeight(fixedFunction) {
-        
-        if(window.innerWidth <= 720){
-            fixedFunction(window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop || window.scrollY)
-        }else{
-            fixedFunction(0)
-        }
+    if (window.innerWidth <= 720) {
+        fixedFunction(document.body.scrollTop || document.documentElement.scrollTop || window.scrollY)
+    } else {
+        fixedFunction(0)
+    }
 }
 
 function HandleScroll(fixedFunction) {
-    window.addEventListener('scroll', debounce(VisualAreaHeight, 12, fixedFunction))
+    window.addEventListener('scroll', function () {
+        debounce(VisualAreaHeight, 12, fixedFunction)
+    })
 }
 
-function loadingCompleted() {
-    HandleScroll(function (scrollTop) {
-        let navigationBarBgColor = document.querySelector('.navigationBar');
+function changeNavigationBar(scrollTop) {
+    let navigationBarBgColor = document.querySelector('.navigationBar');
 
-
-
-
-        if (scrollTop == 0) {
-            navigationBarBgColor.classList.remove("navigationBarWhite");
+    if (scrollTop == 0) {
+        navigationBarBgColor.classList.remove("navigationBarWhite");
+        navigationBarBgColor.classList.remove('navigationBarTranslucent');
+    } else {
+        if (scrollTop >= 512) {
             navigationBarBgColor.classList.remove('navigationBarTranslucent');
+            navigationBarBgColor.classList.add("navigationBarWhite");
         } else {
-            if (scrollTop >= 512) {
-                navigationBarBgColor.classList.remove('navigationBarTranslucent');
-                navigationBarBgColor.classList.add("navigationBarWhite");
-            } else {
-                navigationBarBgColor.classList.remove("navigationBarWhite");
-                navigationBarBgColor.classList.add('navigationBarTranslucent');
+            navigationBarBgColor.classList.remove("navigationBarWhite");
+            navigationBarBgColor.classList.add('navigationBarTranslucent');
 
-            }
         }
-    });
+    }
+}
+
+window.addEventListener('resize', function () {
+    if (window.innerWidth >= 720) {
+        maskingClass.style.display = "none"
+    }
+    debounce(VisualAreaHeight, 12, changeNavigationBar)
+});
+
+function loadingCompleted() {
+    HandleScroll(changeNavigationBar);
 
     let images = document.querySelectorAll('img');
 
