@@ -117,6 +117,12 @@ main {
     font-size: 20px;
 }
 
+.navigationBarItem:hover,
+.itemTitle:hover{
+    color: #255696;
+    cursor: pointer;
+}
+
 .navigationBarItem+.navigationBarItem {
     margin-left: 88px;
 }
