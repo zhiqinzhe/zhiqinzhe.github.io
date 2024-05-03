@@ -23,6 +23,10 @@
     /* 已经被抛弃或即将被抛弃*/
 }
 
+img{
+    object-fit: cover;
+}
+
 body {
     width: 100%;
     max-width: 100vw;
