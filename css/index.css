@@ -98,8 +98,8 @@ main {
 }
 
 .logo {
-    width: 130px;
-    height: 56px;
+    max-width: 130px;
+    max-height: 60px;
     pointer-events: none;
     /* 阻止了所有指针事件，包括点击和拖动，但它不会阻止鼠标滚轮滚动或文本的选择 */
 
