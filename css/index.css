@@ -557,6 +557,12 @@ footer>a,
     .content {
         text-indent: 2em;
     }
+    
+    #lianJe {
+        /* max-height: 26px; */
+        min-height: 32px;
+        line-height: 32px;
+    }
 
     .verticalNavigationBar {
         width: 100% !important;
