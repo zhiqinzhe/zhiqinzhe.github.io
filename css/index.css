@@ -230,7 +230,7 @@ main {
     justify-content: center;
 }
 
-.itemLogo>img{
+.itemLogo>img {
     max-width: 100%;
 }
 
@@ -254,11 +254,12 @@ main {
     font-size: 14px;
     line-height: 26px;
     overflow: hidden;
-    max-height: 125px;
+    max-height: 151px;
     text-align: justify;
     word-break: break-all;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 6;
+    line-clamp: 1;
     -webkit-box-orient: vertical;
 }
 
@@ -289,17 +290,34 @@ footer {
     background-color: #0B0C15;
 }
 
+#lianJe,
 footer>a {
     text-decoration: none;
 }
 
 footer,
-footer>a {
+footer>a,
+#lianJe {
     font-weight: 400;
     font-size: 14px;
     line-height: 14px;
     color: #FAFBFF;
     line-height: 26px;
+}
+
+#XiaZaiDuoCai {
+    max-height: 125px;
+    -webkit-line-clamp: 5;
+}
+
+#lianJe {
+    display: block;
+    background-color: #008CD6;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    max-height: 26px;
 }
 
 @media screen and (max-width: 1551px) {
